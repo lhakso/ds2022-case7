@@ -1,3 +1,4 @@
+from flask import jsonify
 import os
 import logging
 from datetime import datetime
@@ -102,9 +103,9 @@ def gallery():
         return jsonify(ok=False, error=str(e)), 500
 
 
-@app.get("/health")
+@app.get("/api/v1/health")
 def health():
-    return Response("OK", status=200)
+    return jsonify(ok=True, status="healthy"), 200
 
 # ----------------------------------------------------
 # Frontend (simple HTML + JS)
